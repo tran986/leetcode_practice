@@ -10,13 +10,16 @@ for i in range(len(nums)): #index of 1st num
            print([i, j])
 
 # Given an integer x, return true if x is a palindrome, and false otherwise.
-x = -12345
-digit = [int(d) for d in str(abs(x))]
-digit_rev = digit[::-1]
-if digit == digit_rev :
-    print("True")
-else:
+x = -121
+if x < 0:
     print("False")
+else:
+    digit = [int(d) for d in str(abs(x))]
+    digit_rev = digit[::-1]
+    if digit == digit_rev :
+        print("True")
+    else:
+        print("False")
 
 
      
