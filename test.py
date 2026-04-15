@@ -11,14 +11,14 @@ s = Solution()
 print(s.twoSum(4,2))
 """
       
-nums = [2,7,11,15]
+nums = [2,7,11]
 target = 9
 
-s = 0
+id=1
 for i in range(len(nums)):
     n=nums[i] 
-    s += n
-    print(s)
+    id = id + 1
+    print(n + nums[id])
     #print(f"idx {i} - {n}")
     
         
