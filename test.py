@@ -1,5 +1,5 @@
 # Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
-
+"""
 nums = [2,7,11]
 target = 18
 
@@ -20,6 +20,28 @@ else:
         print("True")
     else:
         print("False")
+"""
+
+#You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, 
+# and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+#You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+#Input: l1 = [2,4,3], l2 = [5,6,4]
+#Output: [7,0,8]
+#342 + 465
+
+in1=[2,4,3]
+in2=[5,6,4]
+
+in1_r=in1[::-1]
+in2_r=in2[::-1]
+
+in1_map=int("".join(map(str, in1_r)))
+in2_map=int("".join(map(str, in2_r)))
+in12_map=in1_map + in2_map
+print(int(str(in12_map)[::-1]))
+
+#total=[x + y for x, y in zip(in1_r, in2_r)]
+#print(total[::-1])
 
 
-     
+
