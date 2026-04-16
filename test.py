@@ -20,7 +20,7 @@ else:
         print("True")
     else:
         print("False")
-"""
+
 
 #You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, 
 # and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
@@ -37,11 +37,50 @@ in2_r=in2[::-1]
 
 in1_map=int("".join(map(str, in1_r)))
 in2_map=int("".join(map(str, in2_r)))
-in12_map=in1_map + in2_map
-print(int(str(in12_map)[::-1]))
+result=in1_map + in2_map
+print([int(d) for d in reversed(str(result))])
+"""
 
-#total=[x + y for x, y in zip(in1_r, in2_r)]
-#print(total[::-1])
+#Write a function to find the longest common prefix string amongst an array of strings.
+#If there is no common prefix, return an empty string "".
+#Example 1:
+#Input: strs = ["flower","flow","flight"]
+#Output: "fl"
+#Example 2:
+#Input: strs = ["dog","racecar","car"]
+#Output: ""
+#Explanation: There is no common prefix among the input strings.
+
+strs = ["flower","flow","flight"]
+min_len = min(len(word) for word in strs)
+prefix = ""
+
+for i in range(min_len):
+    char = strs[0][i]
+    for word in strs:
+        if word[i] != char:
+            print(prefix)   # prints "fl" then exits
+            break
+    else:
+        prefix += char      # only adds char if no mismatch
+
+print(prefix)
+        
 
 
+    
+    
+        
 
+"""
+res = []
+for w in word:
+    chars = []
+    for char in w:
+        chars.append(char)
+    res.append(chars)
+
+for i in res:
+    print(i)
+print(i[0])
+"""
