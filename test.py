@@ -65,7 +65,7 @@ for i in range(min_len):
         prefix += char      # only adds char if no mismatch
 
 print(prefix)
-"""
+
 
 #Input: n = 19
 #Output: true
@@ -79,7 +79,7 @@ n=13
 seen = set()
 while n != 1:
     if n in seen:
-        return False
+        print(False)
         break
     seen.add(n)
     digit_sum = []
@@ -89,7 +89,47 @@ while n != 1:
     n = sum(digit_sum)
 
 print(True)
+"""
+"""
+#Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 
-    
+Symbol       Value
+I             1
+V             5
+X             10
+L             50
+C             100
+D             500
+M             1000
 
-           
+For example, 2 is written as II in Roman numeral, just two ones added together. 12 is written as XII, which is simply X + II. The number 27 is written as XXVII, which is XX + V + II.
+
+Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. 
+There are six instances where subtraction is used:
+
+    I can be placed before V (5) and X (10) to make 4 and 9. 
+    X can be placed before L (50) and C (100) to make 40 and 90. 
+    C can be placed before D (500) and M (1000) to make 400 and 900.
+
+Given a roman numeral, convert it to an integer.
+"""
+rom_num = "XIX" #return 11
+
+symbol = {"I":1,
+          "V":5,
+          "X":10,
+          "L":50,
+          "C":100,
+          "D":500,
+          "M":1000}
+total = 0
+for i in range(len(rom_num) - 1):
+    current_num = symbol[rom_num[i]]
+    next_num = symbol[rom_num[i + 1]]
+    if current_num < next_num :
+        total -= current_num
+    else:
+        total += current_num
+total += symbol[rom_num[-1]]
+print(total)
+
