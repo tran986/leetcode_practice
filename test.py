@@ -177,3 +177,31 @@ Input: nums = [0,0,0]
 Output: [[0,0,0]]
 Explanation: The only possible triplet sums up to 0.
 """
+
+
+#for i in range(len(nums) - 2):
+#    a, b, c = nums[i], nums[i+1], nums[i+2]
+    #print(nums[i] + nums[i+1] + nums[i+2])
+"""
+nums = [-1,0,1,2,-1,-4]
+nums=sorted(nums, reverse = False)
+print(nums)
+result = []
+for i in range(0, len(nums) - 2):
+    left = i + 1
+    right = len(nums) - 1
+    while left < right and nums[left] == nums[left - 1]:
+        if nums[i] + nums[right] + nums[left] == 0:
+            print([])
+            left += 1
+        elif nums[i] + nums[right] + nums[left] < 0:
+            left += 1
+        else: 
+            right -= 1
+    result.append([nums[i], nums[left], nums[right]])
+
+print(result)
+"""
+
+#Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.
+      
