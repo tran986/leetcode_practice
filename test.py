@@ -203,5 +203,40 @@ for i in range(0, len(nums) - 2):
 print(result)
 """
 
-#Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.
-      
+#Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.   
+num = 10
+while num >= 10:
+    total = 0
+    for d in str(num):
+       digit = int(d)
+       total += digit
+    num = total #assign the new num as total before checking if they are >= 10
+#print(num)
+
+words = ["practice", "makes", "perfect", "coding", "makes"]
+word1 = "makes"
+word2 = "perfect"
+
+idx2 = words.index(word2)
+idx1 = words.index(word1)
+for idx in range(len(words)):
+    if words[idx] == "makes" and word1 == "makes":
+       print(abs(idx - idx2))
+       break
+    else:
+        if words[idx] == "makes" and word2 == "makes":
+           print(abs(idx - idx1))
+           break
+        else: print(abs(idx1 - idx2))
+        
+
+    
+            
+#print(words.index("makes"))
+
+
+
+
+
+
+    
