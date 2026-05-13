@@ -229,6 +229,38 @@ for i in range(len(words)):
 
 print(min_dist)
 """
+#Rosalind problems:
+#1.using slice:
+list = "HumptyDumptysatonawallHumptyDumptyhadagreatfallAlltheKingshorsesandalltheKingsmenCouldntputHumptyDumptyinhisplaceagain"
+#print(list[0:6] + " " + list[6:12]) #Humpty Dumpty
+
+#2.Given: Two positive integers a and b (a<b<10000).
+#Return: The sum of all odd integers from a through b, inclusively.
+num1 = 100
+num2 = 200
+sum = int()
+for i in range(num1, num2):
+    if i % 2 != 0:
+        sum += i
+#print(sum) 75000
+
+#3. Reading and writing:
+f = open('output.txt', 'w')
+f.write('Bravely bold Sir Robin rode forth from Camelot\n' \
+'Yes, brave Sir Robin turned about\n' \
+'He was not afraid to die, O brave Sir Robin\n' \
+'And gallantly he chickened out\n' \
+'He was not at all afraid to be killed in nasty ways\n' \
+'Bravely talking to his feet\n' \
+'Brave, brave, brave, brave Sir Robin\n' \
+'He beat a very brave retreat')
+
+f.close()
+
+with open("output.txt", "r") as f:
+    for line_num, txt in enumerate(f):
+        if line_num % 2 != 0:
+            print(txt)
 
 
     
