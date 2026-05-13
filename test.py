@@ -262,7 +262,7 @@ with open("output.txt", "r") as f:
         if line_num % 2 != 0:
             print(txt)
 
-"""
+
 #4. working with dict():
 s = "We tried list and we tried dicts also we tried Zen"
 out = dict()
@@ -273,11 +273,46 @@ for words in s.split():
         out[words] += 1
 
 print(out)
-            
 
+#5. Counting DNA nucleotide: - count a, count t, count g, and count c:
+dna_s = "AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC"
+count_a = int()
+count_c = int()
+count_g = int()
+count_t = int()
 
+for nu in dna_s:
+    if nu == "C":
+         count_c += 1
+    else:
+        if nu == "A":
+           count_a += 1
+        elif nu == "T":
+           count_t += 1
+        else: 
+           count_g += 1
 
+print(count_a)
+print(count_c)
+print(count_g)
+print(count_t)
 
+#6. Transcribe DNA to RNA:
+dna_str = "GATGGAACTTGACTACGTAAATT"
+rna_str = dna_str.replace("T", "U")
+print(rna_str)
+
+#7. Complementing a Strand of DNA
+sense_dna = "AAAACCCGGT"
+def complement(dna):
+    dna_rev = dna[::-1]
+    table = str.maketrans("ATGC", "TACG")
+    return(dna_rev.translate(table))
+
+print(complement(sense_dna))
+
+"""    
+#
 
 
 
