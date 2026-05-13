@@ -201,7 +201,7 @@ for i in range(0, len(nums) - 2):
     result.append([nums[i], nums[left], nums[right]])
 
 print(result)
-"""
+
 
 #Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.   
 num = 10
@@ -213,26 +213,27 @@ while num >= 10:
     num = total #assign the new num as total before checking if they are >= 10
 #print(num)
 
+#Shortest Word Distance:
 words = ["practice", "makes", "perfect", "coding", "makes"]
 word1 = "makes"
-word2 = "perfect"
+word2 = "coding"
 
 idx2 = words.index(word2)
 idx1 = words.index(word1)
-for idx in range(len(words)):
-    if words[idx] == "makes" and word1 == "makes":
-       print(abs(idx - idx2))
-       break
-    else:
-        if words[idx] == "makes" and word2 == "makes":
-           print(abs(idx - idx1))
-           break
-        else: print(abs(idx1 - idx2))
-        
+min_dist = float("inf")
+#call index of word 1 is i, and index of word 2 is j
+for i in range(len(words)):
+    for j in range(len(words)):
+        if words[i] == word1 and words[j] == word2:
+            min_dist = min(min_dist, abs(i-j))
+
+print(min_dist)
+"""
+
 
     
             
-#print(words.index("makes"))
+
 
 
 
