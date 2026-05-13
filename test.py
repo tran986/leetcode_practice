@@ -228,7 +228,7 @@ for i in range(len(words)):
             min_dist = min(min_dist, abs(i-j))
 
 print(min_dist)
-"""
+
 #Rosalind problems:
 #1.using slice:
 list = "HumptyDumptysatonawallHumptyDumptyhadagreatfallAlltheKingshorsesandalltheKingsmenCouldntputHumptyDumptyinhisplaceagain"
@@ -262,8 +262,17 @@ with open("output.txt", "r") as f:
         if line_num % 2 != 0:
             print(txt)
 
+"""
+#4. working with dict():
+s = "We tried list and we tried dicts also we tried Zen"
+out = dict()
+for words in s.split():
+    if words not in out:
+        out[words] = 1
+    else:
+        out[words] += 1
 
-    
+print(out)
             
 
 
