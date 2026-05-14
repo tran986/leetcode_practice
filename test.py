@@ -178,7 +178,6 @@ Output: [[0,0,0]]
 Explanation: The only possible triplet sums up to 0.
 """
 
-
 #for i in range(len(nums) - 2):
 #    a, b, c = nums[i], nums[i+1], nums[i+2]
     #print(nums[i] + nums[i+1] + nums[i+2])
@@ -201,7 +200,6 @@ for i in range(0, len(nums) - 2):
     result.append([nums[i], nums[left], nums[right]])
 
 print(result)
-
 
 #Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.   
 num = 10
@@ -312,7 +310,34 @@ def complement(dna):
 print(complement(sense_dna))
 
 """    
-#
+#8. Wascally Wabbits
+n = 5 # 5th month
+k = 3 #number of infant each time;
+
+adult = int()
+infant = 1
+repro= int()
+
+for i in range(1, n):
+    repro = adult + repro
+    adult = infant 
+    infant = repro * k
+
+print(repro+adult+infant)
+    
+    
+
+
+
+
+
+
+            
+
+
+
+
+
 
 
 
