@@ -339,16 +339,17 @@ f.close()
 
 with open("output.fasta", "r") as f:
     for line_num, line in enumerate(f):
-        if line[0] == ">":
-           label = line
-        else: 
-           seq = line
+        while g
+           if line[0] == ">":
+               label = line
+           else: 
+               seq = line
            #count number of gc content:
-           GC_content = int()
-           for i in seq:
-               if i == "G" or i == "C":
-                   GC_content+=1
-           print(GC_content/len(seq))
+               GC_count = int()
+               for i in seq:
+                   if i == "G" or i == "C":
+                       GC_count+=1
+               GC_content = GC_count/len(seq)
                
     
     
