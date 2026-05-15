@@ -353,7 +353,21 @@ with open("output.fasta", "r") as f:
                 max_id = tag
     print(tag)
     print(max_GC_content)
-"""         
+"""    
+#10. Hamming distance:
+dna1 = "GAGCCTACTAACGGGAT"
+dna2 = "CATCGTAATGACGGCCT" 
+
+h_dist = int()
+for s1, s2 in zip(dna1, dna2):
+    if s1 != s2:
+        h_dist += 1
+    else:
+        h_dist = h_dist
+print(h_dist)
+
+
+    
 
                    
                
