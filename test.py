@@ -309,7 +309,7 @@ def complement(dna):
 
 print(complement(sense_dna))
 
-"""    
+  
 #8. Wascally Wabbits
 n =5 # 5th month
 k = 3 #number of infant each time;
@@ -336,26 +336,24 @@ f.write('>Rosalind_6404\n' \
 'CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT')
 
 f.close()
-
 with open("output.fasta", "r") as f:
+    it = iter(f)
     max_GC_content = float()
-    for line_num, line in enumerate(f):
-           if line[0] == ">":
-               label = line
-           else: 
-               seq = line
-           #count number of gc content:
-               GC_count = int()
-               for i in seq:
-                   if i == "G" or i == "C":
-                       GC_count+=1
-               GC_content = GC_count/len(seq)
-               if GC_content > max_GC_content:
-                   max_GC_content = GC_content
-
+    max_id = ""
+    for line1, line2 in zip(it, it):
+        tag = line1
+        seq = line2
+        GC_count = int()
+        for i in seq:
+            if i == "G" or i == "C":
+                GC_count+=1
+            GC_content = GC_count/len(seq)
+            if GC_content > max_GC_content:
+                max_GC_content = GC_content
+                max_id = tag
+    print(tag)
     print(max_GC_content)
-
-
+"""         
 
                    
                
