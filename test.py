@@ -311,7 +311,7 @@ print(complement(sense_dna))
 
 """    
 #8. Wascally Wabbits
-n = 5 # 5th month
+n =5 # 5th month
 k = 3 #number of infant each time;
 
 adult = int()
@@ -323,22 +323,34 @@ for i in range(1, n):
     adult = infant 
     infant = repro * k
 
-print(repro+adult+infant)
+#print(repro+adult+infant)
+
+#9.C Computing GC Content:
+#3. Reading and writing:
+f = open('output.fasta', 'w')
+f.write('>Rosalind_6404\n' \
+'CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG\n' \
+'>Rosalind_5959\n' \
+'CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC\n' \
+'>Rosalind_0808\n' \
+'CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT')
+
+f.close()
+
+with open("output.fasta", "r") as f:
+    for line_num, line in enumerate(f):
+        if line[0] == ">":
+           label = line
+        else: 
+           seq = line
+           #count number of gc content:
+           GC_content = int()
+           for i in seq:
+               if i == "G" or i == "C":
+                   GC_content+=1
+           print(GC_content/len(seq))
+               
     
     
 
 
-
-
-
-
-            
-
-
-
-
-
-
-
-
-    
