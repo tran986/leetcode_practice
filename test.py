@@ -338,8 +338,8 @@ f.write('>Rosalind_6404\n' \
 f.close()
 
 with open("output.fasta", "r") as f:
+    max_GC_content = float()
     for line_num, line in enumerate(f):
-        while g
            if line[0] == ">":
                label = line
            else: 
@@ -350,6 +350,14 @@ with open("output.fasta", "r") as f:
                    if i == "G" or i == "C":
                        GC_count+=1
                GC_content = GC_count/len(seq)
+               if GC_content > max_GC_content:
+                   max_GC_content = GC_content
+
+    print(max_GC_content)
+
+
+
+                   
                
     
     
