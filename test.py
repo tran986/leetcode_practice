@@ -353,7 +353,7 @@ with open("output.fasta", "r") as f:
                 max_id = tag
     print(tag)
     print(max_GC_content)
-"""    
+   
 #10. Hamming distance:
 dna1 = "GAGCCTACTAACGGGAT"
 dna2 = "CATCGTAATGACGGCCT" 
@@ -365,6 +365,35 @@ for s1, s2 in zip(dna1, dna2):
     else:
         h_dist = h_dist
 print(h_dist)
+
+""" 
+#11. Mendel's 1st Law:
+n = 2 #aa
+k = 2 #AA
+m = 2 #Aa
+
+#calculate for the selection probability:
+#pair 1 prob:
+popul = n + k + m
+prob_m1 = m / popul
+prob_k1 = k / popul
+prob_n1 = n / popul
+
+#pair 2 prob: -- 
+#if pick 1 is m:
+prob_m2 = float()
+pair_2_choice = ["m2","n2","k2"]
+for choice in pair_2_choice:
+    if choice == "m2":
+        prob_m2 = (m - 1) / (popul -1)
+    elif choice == "n2":
+        prob_m2 = n / (popul - 1)
+    else: 
+        prob_m2 = k / (popul - 1)
+
+
+
+
 
 
     
