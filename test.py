@@ -382,6 +382,7 @@ prob_n1 = n / popul #if pick 1 is n
 prob_1_ls = {"m" : prob_m1, 
              "k" : prob_k1, 
              "n" : prob_n1}
+#print(prob_1_ls)
 
 prob_2_ls = {"m" : m, 
             "k" : k, 
@@ -389,25 +390,52 @@ prob_2_ls = {"m" : m,
 
 double_prob = {}
 single_prob = {}
-for pick, prob in prob_1_ls.items():
+for pick, prob1 in prob_1_ls.items():
     for pick2, num2 in prob_2_ls.items():
         #calculate for those with doubles: mm, kk, nn
+        prob2 = num2 / (popul - 1)
         if pick2 == pick:
-            p = (num2 - 1) / (popul - 1)
-            double_prob[f"{pick}{pick2}"] = p
+            prob2 = (num2 - 1) / (popul - 1)
+            double_prob[f"{pick}{pick2}"] = prob2 * prob1
+
         #calculate for those with unique single : km, mn, etc.
         else:
-            prob = prob = num2 / (popul - 1)
-            single_prob[f"{pick}{pick2}"] = p
-            #single_prob = num2 / (popul - 1)
-            
-print(double_prob)    
-print(single_prob) 
+            single_prob[f"{pick}{pick2}"] = prob2 * prob1
 
-#
-               
-   
+#- for the singles, combine overlappings: mn = nm, km = mk, and kn = nk:
+keys_single = list(single_prob.keys())
+seen = set()
+comb_single = dict()
+for curr_key in single_prob:
+    reverse_key = curr_key[::-1]
     
+    if reverse_key in single_prob and curr_key not in seen:
+       total = single_prob[reverse_key] + single_prob[curr_key]
+       seen.add(curr_key)
+       seen.add(reverse_key)
+       comb_single[f"{curr_key}"] = total
+
+select_prob = comb_single | double_prob
+
+#--make a allele table:
+dom_tbl={"mk": 1,
+          "km": 1,
+          "mm": 0.75,
+          "mn": 0.5,
+          "nm": 0.5,
+          "kk": 1,
+          "kn": 1,
+          "nk": 1,
+          "nn": 0}
+
+final_res = float()
+for key, val in select_prob.items():
+    case = dom_tbl[key] * val
+    final_res += case
+
+print(final_res)
+    
+
 
 
 
