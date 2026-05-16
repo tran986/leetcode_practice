@@ -375,21 +375,58 @@ m = 2 #Aa
 #calculate for the selection probability:
 #pair 1 prob:
 popul = n + k + m
-prob_m1 = m / popul
-prob_k1 = k / popul
-prob_n1 = n / popul
+prob_m1 = m / popul #if pick 1 is m
+prob_k1 = k / popul #if pick 1 is k
+prob_n1 = n / popul #if pick 1 is n
 
-#pair 2 prob: -- 
-#if pick 1 is m:
-prob_m2 = float()
-pair_2_choice = ["m2","n2","k2"]
-for choice in pair_2_choice:
-    if choice == "m2":
-        prob_m2 = (m - 1) / (popul -1)
-    elif choice == "n2":
-        prob_m2 = n / (popul - 1)
+prob_1_ls = {"m1" : prob_m1, 
+             "k1" : prob_k1, 
+             "n1" : prob_n1}
+
+#when 1st pick is m:
+for pick, prob in prob_1_ls.items():
+    if pick == "m1":
+        prob_mm = (m - 1) / (popul - 1)
+        prob_mm = prob_mm * prob
+    elif pick == "n1":
+        prob_mn = n / (popul - 1)
     else: 
-        prob_m2 = k / (popul - 1)
+        prob_mk = k / (popul - 1)
+
+print(prob_mm)
+print(prob_mn)
+print(prob_mk)
+
+#when 1st pick is k:
+for pick, prob in prob_1_ls.items():
+    if pick == "k1":
+        prob_kk = (k - 1) / (popul - 1)
+        prob_kk_fin = prob * prob_kk
+    elif pick == "n1":
+        prob_km = m / (popul - 1)
+    else: 
+        prob_kn = n / (popul - 1)
+
+print(prob_km)
+print(prob_kk)
+print(prob_kn)
+
+#when 1st pick is n:
+for pick, prob in prob_1_ls.items():
+    if pick == "n1":
+        prob_nn = (n - 1) / (popul - 1)
+        prob_nn_fin = prob_nn * prob
+    elif pick == "m1":
+        prob_nm = m / (popul - 1)
+    else: 
+        prob_nk = k / (popul - 1)
+
+print(prob_nn_fin)
+print(prob_nk)
+print(prob_nm)
+
+#how to 
+
 
 
 
