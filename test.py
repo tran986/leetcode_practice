@@ -379,53 +379,36 @@ prob_m1 = m / popul #if pick 1 is m
 prob_k1 = k / popul #if pick 1 is k
 prob_n1 = n / popul #if pick 1 is n
 
-prob_1_ls = {"m1" : prob_m1, 
-             "k1" : prob_k1, 
-             "n1" : prob_n1}
+prob_1_ls = {"m" : prob_m1, 
+             "k" : prob_k1, 
+             "n" : prob_n1}
 
-#when 1st pick is m:
+prob_2_ls = {"m" : m, 
+            "k" : k, 
+            "n" : n}
+
+double_prob = {}
+single_prob = {}
 for pick, prob in prob_1_ls.items():
-    if pick == "m1":
-        prob_mm = (m - 1) / (popul - 1)
-        prob_mm = prob_mm * prob
-    elif pick == "n1":
-        prob_mn = n / (popul - 1)
-    else: 
-        prob_mk = k / (popul - 1)
+    for pick2, num2 in prob_2_ls.items():
+        #calculate for those with doubles: mm, kk, nn
+        if pick2 == pick:
+            p = (num2 - 1) / (popul - 1)
+            double_prob[f"{pick}{pick2}"] = p
+        #calculate for those with unique single : km, mn, etc.
+        else:
+            prob = prob = num2 / (popul - 1)
+            single_prob[f"{pick}{pick2}"] = p
+            #single_prob = num2 / (popul - 1)
+            
+print(double_prob)    
+print(single_prob) 
 
-print(prob_mm)
-print(prob_mn)
-print(prob_mk)
+#
+               
+   
+    
 
-#when 1st pick is k:
-for pick, prob in prob_1_ls.items():
-    if pick == "k1":
-        prob_kk = (k - 1) / (popul - 1)
-        prob_kk_fin = prob * prob_kk
-    elif pick == "n1":
-        prob_km = m / (popul - 1)
-    else: 
-        prob_kn = n / (popul - 1)
-
-print(prob_km)
-print(prob_kk)
-print(prob_kn)
-
-#when 1st pick is n:
-for pick, prob in prob_1_ls.items():
-    if pick == "n1":
-        prob_nn = (n - 1) / (popul - 1)
-        prob_nn_fin = prob_nn * prob
-    elif pick == "m1":
-        prob_nm = m / (popul - 1)
-    else: 
-        prob_nk = k / (popul - 1)
-
-print(prob_nn_fin)
-print(prob_nk)
-print(prob_nm)
-
-#how to 
 
 
 
