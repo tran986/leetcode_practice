@@ -366,7 +366,6 @@ for s1, s2 in zip(dna1, dna2):
         h_dist = h_dist
 print(h_dist)
 
-""" 
 #11. Mendel's 1st Law:
 n = 2 #aa
 k = 2 #AA
@@ -434,7 +433,39 @@ for key, val in select_prob.items():
     final_res += case
 
 print(final_res)
-    
+
+#12. Translating RNA into Protein:
+s = "AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA"
+codon_tbl = {"UUU":"F","CUU":"L", "AUU":"I", "GUU":"V",
+             "UUC":"F", "CUC":"L", "AUC":"I", "GUC":"V",
+             "UUA":"L", "CUA": "L", "AUA":"I", "GUA":"V",
+             "UUG":"L","CUG":"L", "AUG":"M","GUG":"V",
+             "UCU":"S","CCU":"P","ACU":"T","GCU":"A",
+             "UCC":"S","CCC":"P","ACC":"T","GCC":"A",
+             "UCA":"S","CCA":"P","ACA":"T","GCA":"A",
+             "UCG":"S","CCG":"P","ACG":"T","GCG":"A",
+             "UAU":"Y","CAU":"H","AAU":"N","GAU":"D",
+             "UAC": "Y","CAC":"H","AAC":"N","GAC":"D",
+             "UAA":"*", "CAA":"Q","AAA":"K","GAA":"E",
+             "UAG":"*","CAG":"Q","AAG":"K","GAG":"E",
+             "UGU":"C","CGU":"R","AGU":"S","GGU":"G",
+             "UGC":"C","CGC":"R","AGC":"S","GGC":"G",
+             "UGA":"*","CGA":"R","AGA":"R","GGA":"G",
+             "UGG":"W","CGG": "R","AGG":"R","GGG":"G"} 
+
+#feel like there is a better way to make this tbl but lol this will do .
+aa_seq = ""
+for i in range(0, len(s), 3):
+    reading_frame = s[i:i+3]
+    aa = codon_tbl[reading_frame]
+    aa_seq += aa
+    if aa == "*":
+       break
+print(aa_seq)
+""" 
+#Finding a Motif in DNA
+s = "GATATATGCATATACTT"
+t = "ATAT"
 
 
 
