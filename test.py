@@ -456,16 +456,51 @@ codon_tbl = {"UUU":"F","CUU":"L", "AUU":"I", "GUU":"V",
 #feel like there is a better way to make this tbl but lol this will do .
 aa_seq = ""
 for i in range(0, len(s), 3):
-    reading_frame = s[i:i+3]
+    reading_frame = s[i:i+3] #for non-overlapping looping
     aa = codon_tbl[reading_frame]
     aa_seq += aa
     if aa == "*":
        break
 print(aa_seq)
-""" 
-#Finding a Motif in DNA
+
+#13. Finding a Motif in DNA
 s = "GATATATGCATATACTT"
-t = "ATAT"
+t = "ATAT" #return idex:
+seen = set()
+#print(len(t))
+for i in range(len(s) - 2): #for overlapping looping through multiple letters at the same time
+    reading_frame = s[i:i+4]
+    if reading_frame == t:
+        print(i + 1)
+
+""" 
+#14. Consensus and Profile
+f = open('output.fasta', 'w')
+f.write(">Rosalind_1\n" \
+"ATCCAGCT\n" \
+">Rosalind_2\n" \
+"GGGCAACT\n" \
+">Rosalind_3\n" \
+"ATGGATCT\n" \
+">Rosalind_4\n" \
+"AAGCAACC\n" \
+">Rosalind_5\n" \
+"TTGGAACT\n" \
+">Rosalind_6\n" \
+"ATGCCATT\n" \
+">Rosalind_7\n" \
+"ATGGCACT")
+
+f.close()
+matrix = ""
+with open("output.fasta", "r") as f:
+    for line in f:
+        if not line.startswith(">"):
+            matrix += line
+print(matrix)
+
+
+
 
 
 
