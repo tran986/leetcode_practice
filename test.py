@@ -514,18 +514,21 @@ with open("output.fasta", "r") as f:
                     if line[idex_pos] == nuc: 
                         idx_col_ls[key][nuc] += 1
                      
-#print(idx_col_ls.values())
-for letter in idx_col_ls.values():
-    print(letter)
+profile = {
+    "A": [],
+    "C": [],
+    "G": [],
+    "T": []
+}
+
+for row in idx_col_ls.values():
+    for key, value in row.items():
+        profile[key].append(value)
+
+print(profile)
 
 
-#print(A1)           
 
-#count A for every 8 letters:
-#A1 = int()
-# for i in range(0, len(matrix), 8):
-#    if matrix[i] == "A":
-        #print(True)
 
 
 
