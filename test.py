@@ -492,26 +492,32 @@ f.write(">Rosalind_1\n" \
 "ATGGCACT")
 
 f.close()
-matrix = ""
-consensus = ""
-A1 = int()
 list = "ATCG"
+j = 8 #j is the number of column the matrix has
 
-ACGT_0 = {"A":0,
-          "C":0,
-          "G":0,
-          "T":0}
+idx_col_ls = dict()
+#initate to create empty dictionary for each column (jth) 
+for column in range(j):
+    idx_col = "ACGC_" + str(column)
+    idx_col_ls[idx_col] = {"A":0,
+                           "C":0,
+                           "G":0,
+                           "T":0}
 
-
+ACGT_0 = idx_col_ls["ACGC_0"]
 with open("output.fasta", "r") as f:
     for line in f:
-        if not line.startswith(">"):
-            for nuc in list:
-               if line[0] == nuc:
-                   ACGT_0[nuc] += 1
-print(ACGT_0)
-                   
-                  
+        if not line.startswith(">"): #start reading into each line
+            for key in idx_col_ls: 
+                for nuc in list:
+                    idex_pos = int(key[-1])
+                    if line[idex_pos] == nuc: 
+                        idx_col_ls[key][nuc] += 1
+                     
+#print(idx_col_ls.values())
+for letter in idx_col_ls.values():
+    print(letter)
+
 
 #print(A1)           
 
