@@ -493,11 +493,34 @@ f.write(">Rosalind_1\n" \
 
 f.close()
 matrix = ""
+consensus = ""
+A1 = int()
+list = "ATCG"
+
+ACGT_0 = {"A":0,
+          "C":0,
+          "G":0,
+          "T":0}
+
+
 with open("output.fasta", "r") as f:
     for line in f:
         if not line.startswith(">"):
-            matrix += line
-print(matrix)
+            for nuc in list:
+               if line[0] == nuc:
+                   ACGT_0[nuc] += 1
+print(ACGT_0)
+                   
+                  
+
+#print(A1)           
+
+#count A for every 8 letters:
+#A1 = int()
+# for i in range(0, len(matrix), 8):
+#    if matrix[i] == "A":
+        #print(True)
+
 
 
 
