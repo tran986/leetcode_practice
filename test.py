@@ -473,7 +473,7 @@ for i in range(len(s) - 2): #for overlapping looping through multiple letters at
     if reading_frame == t:
         print(i + 1)
 
-""" 
+
 #14. Consensus and Profile
 f = open('output.fasta', 'w')
 f.write(">Rosalind_1\n" \
@@ -504,7 +504,6 @@ for column in range(j):
                            "G":0,
                            "T":0}
 
-ACGT_0 = idx_col_ls["ACGC_0"]
 with open("output.fasta", "r") as f:
     for line in f:
         if not line.startswith(">"): #start reading into each line
@@ -526,7 +525,33 @@ for row in idx_col_ls.values():
         profile[key].append(value)
 
 print(profile)
+#finding the consensus:
+consensus = []
+for i in range(7):
+    max_key = max(profile, key = lambda f: profile[f][i])
+    consensus.append(max_key)
 
+print(consensus)
+""" 
+#14. Mortal Fibonacci Rabits:
+n = 6 # at n-th month
+k = 1 #number of infant each time;
+
+adult = int()
+infant = 1 #starting number of infant
+rep_live = int()
+rep_dying = int()
+
+for i in range(1, n):
+    rep_die = rep_live
+    rep_live = adult + rep_live
+    adult = infant
+    infant = rep_live * k
+    total = (infant + adult + rep_live - rep_die)
+    rep_live = rep_live - rep_die
+
+print(total)
+ 
 
 
 
