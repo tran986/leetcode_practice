@@ -532,7 +532,7 @@ for i in range(7):
     consensus.append(max_key)
 
 print(consensus)
-""" 
+
 #14. Mortal Fibonacci Rabits:
 n = 6 # at n-th month
 k = 1 #number of infant each time;
@@ -551,8 +551,38 @@ for i in range(1, n):
     rep_live = rep_live - rep_die
 
 print(total)
- 
+""" 
 
+#15. Overlap Graph:
+k = 3
+f = open("output.fasta", "w")
+f.write(">Rosalind_0498\n" \
+"AAATAAA\n" \
+">Rosalind_2391\n" \
+"AAATTTT\n" \
+">Rosalind_2323\n" \
+"TTTTCCC\n" \
+">Rosalind_0442\n" \
+"AAATCCC\n" \
+">Rosalind_5013\n" \
+"GGGTGGG")
+
+f.close()
+
+all_str = ""
+with open("output.fasta", "r") as f:
+    prefix_seen = ""
+    suffix_match = ""
+    for line in f:
+        if not line.startswith(">"):
+            line = line.strip()
+            prefix = line[0:k]
+
+            suffix = line[-k:]
+            
+
+            #print(prefix)
+            print(suffix)
 
 
 
