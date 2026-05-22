@@ -551,7 +551,7 @@ for i in range(1, n):
     rep_live = rep_live - rep_die
 
 print(total)
-""" 
+
 
 #15. Overlap Graph:
 k = 3
@@ -568,7 +568,7 @@ f.write(">Rosalind_0498\n" \
 "GGGTGGG")
 
 f.close()
-"""
+#this can only compare the previous to the next one only - will miss out the other
 all_str = ""
 with open("output.fasta", "r") as f:
     prefix_seen = ""
@@ -580,8 +580,8 @@ with open("output.fasta", "r") as f:
             suffix = line[-k:]
             if suffix == prefix_seen:
                 print(line)
-"""
-            
+
+#to compare each one to another        
 with open("output.fasta", "r") as f:
     it = iter(f)
     suffix_id = ""
@@ -602,7 +602,35 @@ for id1, seq1 in record:
         prefix = seq2[-k::]
         if prefix == suffix and id1 != id2:
             print(f"{id1.replace(">","")} {id2.replace(">","")}")
+""" 
+#16. Calculating Expected Offspring
+parent_geno_dict = ["AA-AA",
+                    "AA-Aa",
+                    "AA-aa",
+                    "Aa-Aa",
+                    "Aa-aa",
+                    "aa-aa"]
             
+prob_geno_dominant = {"AA-AA":1,
+                      "AA-Aa":1,
+                      "AA-aa":1,
+                      "Aa-Aa":0.75,
+                      "Aa-aa":0.5,
+                      "aa-aa":0}
+
+input_parent_geno = [1, 0, 0, 1, 0, 1]
+#match input to dict:
+parent_geno = dict(zip(parent_geno_dict, input_parent_geno))
+#print(parent_geno)
+
+sum_prob_2_ofs=int()
+for parent_gene, number in parent_geno.items():
+    res = number * prob_geno_dominant[parent_gene] * 2
+    sum_prob_2_ofs += res
+print(sum_prob_2_ofs)
+
+
+     
 
 
 
