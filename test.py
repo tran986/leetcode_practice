@@ -581,28 +581,28 @@ with open("output.fasta", "r") as f:
             if suffix == prefix_seen:
                 print(line)
 """
-
             
 with open("output.fasta", "r") as f:
     it = iter(f)
     suffix_id = ""
     suffix_patt = ""
     match = ""
+    record = []
 
     for line1, line2 in zip(it, it):
         line2 = line2.strip()
-        prefix = line2[0:k] #prefix current
-        suffix = line2[-k:] #suffix current
+        line1 = line1.strip()
+        record.append((line1, line2))
 
-        if prefix == suffix_patt:
-            match = suffix_id + line1 
-            print(match)
+print(record)
+for id1, seq1 in record:
+    suffix = seq1[0:k]
 
-    #reset counter:
-        suffix_patt = suffix
-        suffix_id = line1
-        
-    
+    for id2, seq2 in record:
+        prefix = seq2[-k::]
+        if prefix == suffix and id1 != id2:
+            print(f"{id1.replace(">","")} {id2.replace(">","")}")
+            
 
 
 
