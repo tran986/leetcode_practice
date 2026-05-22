@@ -568,7 +568,7 @@ f.write(">Rosalind_0498\n" \
 "GGGTGGG")
 
 f.close()
-
+"""
 all_str = ""
 with open("output.fasta", "r") as f:
     prefix_seen = ""
@@ -577,12 +577,32 @@ with open("output.fasta", "r") as f:
         if not line.startswith(">"):
             line = line.strip()
             prefix = line[0:k]
-
             suffix = line[-k:]
-            
+            if suffix == prefix_seen:
+                print(line)
+"""
 
-            #print(prefix)
-            print(suffix)
+            
+with open("output.fasta", "r") as f:
+    it = iter(f)
+    suffix_id = ""
+    suffix_patt = ""
+    match = ""
+
+    for line1, line2 in zip(it, it):
+        line2 = line2.strip()
+        prefix = line2[0:k] #prefix current
+        suffix = line2[-k:] #suffix current
+
+        if prefix == suffix_patt:
+            match = suffix_id + line1 
+            print(match)
+
+    #reset counter:
+        suffix_patt = suffix
+        suffix_id = line1
+        
+    
 
 
 
