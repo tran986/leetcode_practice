@@ -630,7 +630,7 @@ print(sum_prob_2_ofs)
 
 
 """ 
-
+#17. Finding a Shared Motif
 with open("output.fasta", "r") as f:
     it = iter(f)
     seq_profile = []
@@ -638,14 +638,17 @@ with open("output.fasta", "r") as f:
         seq_profile.append(seq.strip())
 
 #find the shortest seq:
-print(seq_profile)
 shortest=min(seq_profile, key = len)
-k = 2  # just test with a fixed k first
-for i in range(len(shortest)-k):
-    kmer = shortest[i:i+k]
-    if all(kmer in seq for seq in seq_profile): #to check if kmer present in all seq in seq_profile
-        print(kmer)
-    
+def find_shortest_seq(seq_profile, shortest):
+    for k in range(len(shortest), 0, -1):          # ← 4 spaces
+        for i in range(len(shortest) - k + 1):     # ← 8 spaces
+            kmer = shortest[i:i+k]                 # ← 12 spaces
+            if all(kmer in seq for seq in seq_profile):  # ← 12 spaces
+                return kmer
+
+print(find_shortest_seq(seq_profile, shortest))       
+                
+#18. Second mendel law:
 
     
 
