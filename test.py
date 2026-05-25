@@ -602,7 +602,7 @@ for id1, seq1 in record:
         prefix = seq2[-k::]
         if prefix == suffix and id1 != id2:
             print(f"{id1.replace(">","")} {id2.replace(">","")}")
-""" 
+
 #16. Calculating Expected Offspring
 parent_geno_dict = ["AA-AA",
                     "AA-Aa",
@@ -621,7 +621,6 @@ prob_geno_dominant = {"AA-AA":1,
 input_parent_geno = [1, 0, 0, 1, 0, 1]
 #match input to dict:
 parent_geno = dict(zip(parent_geno_dict, input_parent_geno))
-#print(parent_geno)
 
 sum_prob_2_ofs=int()
 for parent_gene, number in parent_geno.items():
@@ -630,19 +629,25 @@ for parent_gene, number in parent_geno.items():
 print(sum_prob_2_ofs)
 
 
-     
+""" 
 
+with open("output.fasta", "r") as f:
+    it = iter(f)
+    seq_profile = []
+    for header, seq in zip(it, it):
+        seq_profile.append(seq.strip())
 
+#find the shortest seq:
+print(seq_profile)
+shortest=min(seq_profile, key = len)
+k = 2  # just test with a fixed k first
+for i in range(len(shortest)-k):
+    kmer = shortest[i:i+k]
+    if all(kmer in seq for seq in seq_profile): #to check if kmer present in all seq in seq_profile
+        print(kmer)
+    
 
-
-
-
-
-
-
-
-
-
+    
 
 
     
