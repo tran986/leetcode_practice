@@ -628,8 +628,6 @@ for parent_gene, number in parent_geno.items():
     sum_prob_2_ofs += res
 print(sum_prob_2_ofs)
 
-
-""" 
 #17. Finding a Shared Motif
 with open("output.fasta", "r") as f:
     it = iter(f)
@@ -640,15 +638,25 @@ with open("output.fasta", "r") as f:
 #find the shortest seq:
 shortest=min(seq_profile, key = len)
 def find_shortest_seq(seq_profile, shortest):
-    for k in range(len(shortest), 0, -1):          # ← 4 spaces
-        for i in range(len(shortest) - k + 1):     # ← 8 spaces
-            kmer = shortest[i:i+k]                 # ← 12 spaces
-            if all(kmer in seq for seq in seq_profile):  # ← 12 spaces
+    for k in range(len(shortest), 0, -1):          
+        for i in range(len(shortest) - k + 1):     
+            kmer = shortest[i:i+k]                 
+            if all(kmer in seq for seq in seq_profile):  
                 return kmer
 
-print(find_shortest_seq(seq_profile, shortest))       
-                
+#print(find_shortest_seq(seq_profile, shortest))       
+
+"""             
 #18. Second mendel law:
+k = 2 #the kth generation 
+N = 1 #at least number of offsprings with AaBb  
+
+num_offspring = 2 ** k
+NOT_AaBb = 0.75 #this is per offspring
+prob_none_offsp_AaBb = NOT_AaBb ** num_offspring
+res = 1 - prob_none_offsp_AaBb
+print(res)
+
 
     
 
