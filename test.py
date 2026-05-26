@@ -651,14 +651,15 @@ def find_shortest_seq(seq_profile, shortest):
 k = 2 #the kth generation 
 N = 1 #at least number of offsprings with AaBb  
 
-num_offspring = 2 ** k
-NOT_AaBb = 0.75 #this is per offspring
-prob_none_offsp_AaBb = NOT_AaBb ** num_offspring
-res = 1 - prob_none_offsp_AaBb
-print(res)
+def second_mendel_law(k, N):
+   num_offspring = 2 ** k
+   NOT_AaBb = 0.75 #this is per offspring
+   prob_none_offsp_AaBb = NOT_AaBb ** num_offspring
+   res = 1 - prob_none_offsp_AaBb
+   return res
 
-
-    
+second_mendel_law(k = 2, #the kth generation 
+                  N = 1) #at least number of offsprings with AaBb  
 
 
     
