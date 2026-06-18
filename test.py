@@ -645,8 +645,7 @@ def find_shortest_seq(seq_profile, shortest):
                 return kmer
 
 #print(find_shortest_seq(seq_profile, shortest))       
-
-"""             
+             
 #18. Second mendel law:
 k = 2 #the kth generation 
 N = 1 #at least number of offsprings with AaBb  
@@ -660,6 +659,48 @@ def second_mendel_law(k, N):
 
 second_mendel_law(k = 2, #the kth generation 
                   N = 1) #at least number of offsprings with AaBb  
+
+"""
+#19. Motif Implies Function:
+import requests
+input_uniprot_id = ["A2Z669",
+                    "B5ZC00",
+                    "P07204",
+                    "P20840"]
+
+# creating a function to obtain seq + find the motif:
+def get_protein_seq(uniprot_id):
+    url = f"https://rest.uniprot.org/uniprotkb/{uniprot_id}.fasta"
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        fasta = response.text
+        seq = fasta.split("\n")[1:] #split each line into a item in list and not taking the first item
+        seq_fin = "".join(seq) #output of this func. -> input of the next func.
+    else:
+        print(f"Error finding {uniprot_id} sequence from UniProt")
+    
+    # get the motif:
+    # N-glycosylation motif: N{P}[ST]{P}
+
+    res = ""
+    for i in range(len(seq_fin) - 2): #for overlapping looping through multiple letters at the same time
+       frame = seq_fin[i:i+4]
+       if frame[0] == "N" and frame[1] != "P" and frame[3] != "P":
+           if frame[2] == "S" or frame[2] == "T":
+               idx = i + 1
+               res += " " + str(idx)
+
+    print(f"{uniprot_id}\n{res}")
+
+# apply the get_protein_seq function for 4 IDs:
+for id in input_uniprot_id:
+    get_protein_seq(id)
+
+
+
+
+
 
 
     
