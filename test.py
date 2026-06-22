@@ -660,7 +660,6 @@ def second_mendel_law(k, N):
 second_mendel_law(k = 2, #the kth generation 
                   N = 1) #at least number of offsprings with AaBb  
 
-"""
 #19. Motif Implies Function:
 import requests
 input_uniprot_id = ["A2Z669",
@@ -682,7 +681,6 @@ def get_protein_seq(uniprot_id):
     
     # get the motif:
     # N-glycosylation motif: N{P}[ST]{P}
-
     res = ""
     for i in range(len(seq_fin) - 2): #for overlapping looping through multiple letters at the same time
        frame = seq_fin[i:i+4]
@@ -696,6 +694,49 @@ def get_protein_seq(uniprot_id):
 # apply the get_protein_seq function for 4 IDs:
 for id in input_uniprot_id:
     get_protein_seq(id)
+"""
+
+# 20. Pitfalls of Reversing Translation - modulo exercise:
+# x mod 1000000 = output
+# where x is the number of RNA can translated into (input) in_pro_str
+# step 1 is find x:
+
+anticodon_table = amino_acid_to_anticodon = {
+    'A': ['UGC', 'GGC', 'CGC', 'AGC'],        # Alanine
+    'R': ['UCG', 'GCG', 'CCG', 'ACG', 'UCU', 'CCU'], # Arginine
+    'N': ['UUG', 'GUG'],                      # Asparagine
+    'D': ['GUC', 'UUC'],                      # Aspartic acid
+    'C': ['GCA', 'UCA'],                      # Cysteine
+    'E': ['UUC', 'CUC'],                      # Glutamic acid
+    'Q': ['UUG', 'CUG'],                      # Glutamine
+    'G': ['UCC', 'GCC', 'CCC', 'ACC'],        # Glycine
+    'H': ['GUG', 'AUG'],                      # Histidine
+    'I': ['UAU', 'GAU', 'CAU'],                # Isoleucine
+    'L': ['UAA', 'GAA', 'CAA', 'UAG', 'GAG', 'CAG'], # Leucine
+    'K': ['UUU', 'CUU'],                      # Lysine
+    'M': ['CAU'],                             # Methionine (Start)
+    'F': ['GAA', 'UAA'],                      # Phenylalanine
+    'P': ['UGG', 'GGG', 'CGG', 'AGG'],        # Proline
+    'S': ['UGA', 'GGA', 'CGA', 'AGA', 'GCU', 'UCU'], # Serine
+    'T': ['UGU', 'GGU', 'CGU', 'AGU'],        # Threonine
+    'W': ['CCA'],                             # Tryptophan
+    'Y': ['GUA', 'UUA'],                      # Tyrosine
+    'V': ['UAC', 'GAC', 'CAC', 'AAC'],        # Valine
+    '*': ['UUA', 'CUA', 'UCA']                # Stop Signals (No corresponding tRNA)
+}
+
+#number of possible RNAs that can be translated into in_pro_str:
+in_pro_str = "MA"
+match_key = 1 #start at 1 b/c this possibility
+for aa in in_pro_str:
+    matched = anticodon_table[aa]
+    possibility = len(matched)
+    match_key *= possibility 
+
+print(match_key)
+#match_key = []
+
+
 
 
 
