@@ -727,14 +727,19 @@ anticodon_table = amino_acid_to_anticodon = {
 
 #number of possible RNAs that can be translated into in_pro_str:
 in_pro_str = "MA"
-match_key = 1 #start at 1 b/c this possibility
+#add a stop codon:
+in_pro_str = in_pro_str + "*"
+res = 1 #start at 1 b/c this possibility
 for aa in in_pro_str:
     matched = anticodon_table[aa]
     possibility = len(matched)
-    match_key *= possibility 
+    #calculate mod after multiplication: - in case it is really big
+    mod_res = possibility % 1000000
+    res *= mod_res
 
-print(match_key)
-#match_key = []
+print(res)
+
+
 
 
 
