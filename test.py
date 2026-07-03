@@ -763,23 +763,67 @@ def transcription(dna):
     rna = dna.replace("T","U")
     return(rna)
 
-s_rna = transcription(s)
-# find the compliment seq:
-rev_s = s[::-1]
-rev_s_rna = transcription(s_rna)
+def reverse_transcription(dna):
+    #Complement
+    translation_table = str.maketrans('ATGC', 'TACG')
+    comp = dna.translate(translation_table) 
+    #Backward 
+    backward = comp[::-1]
+    #Replace T with U:
+    rna = backward.replace("T","U")
+    return(rna)
 
-#three reading frames: - forward:
-res_seq = ""
-for i in range(0, 3):
-    rf = s_rna[i:]
-    for aa in range(0, len(rf), 3):
-        b = rf[aa:aa+3]
-        res = codon_tbl[b]
+#three reading frames function - but this does not start at M:
+def reading_frame_translate(rna_input):
+    frame = []
+    for i in range(0, 3):
+        rf = rna_input[i:]
+        res_seq = ""
+        for aa in range(0, len(rf), 3):
+            b = rf[aa:aa+3]
+            if len(b) > 2:
+                res = codon_tbl[b]
+                if res == "*":
+                    break
+                res_seq += res
+            else:
+                break
+        frame.append(res_seq)
+        #print(f"Frame {i+1}: {res_seq}")
+    return(frame)
 
-    #    res = codon_tbl[aa:aa+3]
-    #    res_seq += res
-#print(res_seq)
+#remove everything before M (only M forward):
+def fin_translate(frame_out):
+    for i in frame_out:
+       idx = i.find("M")
+       if idx != -1:
+           print(i[idx:])
+       else:
+           print("")
+       
+#apply on forward & reverse strands:
+def ORF_func(input):
+    f_rna = transcription(input)
+    r_rna = reverse_transcription(input)
     
+    f_frame = reading_frame_translate(f_rna)
+    r_frame = reading_frame_translate(r_rna)
+    
+    f_pro = fin_translate(f_frame)
+    r_pro = fin_translate(r_frame)
+
+ORF_func(s)
+
+
+
+
+
+
+
+
+
+
+ 
    
  
 
