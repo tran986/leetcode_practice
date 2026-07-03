@@ -694,7 +694,6 @@ def get_protein_seq(uniprot_id):
 # apply the get_protein_seq function for 4 IDs:
 for id in input_uniprot_id:
     get_protein_seq(id)
-"""
 
 # 20. Pitfalls of Reversing Translation - modulo exercise:
 # x mod 1000000 = output
@@ -738,6 +737,53 @@ for aa in in_pro_str:
     res *= mod_res
 
 print(res)
+"""
+# 21. Open reading frame:
+codon_tbl = {"UUU":"F","CUU":"L", "AUU":"I", "GUU":"V",
+             "UUC":"F", "CUC":"L", "AUC":"I", "GUC":"V",
+             "UUA":"L", "CUA": "L", "AUA":"I", "GUA":"V",
+             "UUG":"L","CUG":"L", "AUG":"M","GUG":"V",
+             "UCU":"S","CCU":"P","ACU":"T","GCU":"A",
+             "UCC":"S","CCC":"P","ACC":"T","GCC":"A",
+             "UCA":"S","CCA":"P","ACA":"T","GCA":"A",
+             "UCG":"S","CCG":"P","ACG":"T","GCG":"A",
+             "UAU":"Y","CAU":"H","AAU":"N","GAU":"D",
+             "UAC": "Y","CAC":"H","AAC":"N","GAC":"D",
+             "UAA":"*", "CAA":"Q","AAA":"K","GAA":"E",
+             "UAG":"*","CAG":"Q","AAG":"K","GAG":"E",
+             "UGU":"C","CGU":"R","AGU":"S","GGU":"G",
+             "UGC":"C","CGC":"R","AGC":"S","GGC":"G",
+             "UGA":"*","CGA":"R","AGA":"R","GGA":"G",
+             "UGG":"W","CGG": "R","AGG":"R","GGG":"G"} 
+
+
+s = "AGCCATGTAGCTAACTCAGGTTACATGGGGATGACCCCGCGACTTGGATTAGAGTCTCTTTTGGAATAAGCCTGAATGATCCGAGTAGCATCTCAG"
+#transcription first:
+def transcription(dna):
+    rna = dna.replace("T","U")
+    return(rna)
+
+s_rna = transcription(s)
+# find the compliment seq:
+rev_s = s[::-1]
+rev_s_rna = transcription(s_rna)
+
+#three reading frames: - forward:
+res_seq = ""
+for i in range(0, 3):
+    rf = s_rna[i:]
+    for aa in range(0, len(rf), 3):
+        b = rf[aa:aa+3]
+        res = codon_tbl[b]
+
+    #    res = codon_tbl[aa:aa+3]
+    #    res_seq += res
+#print(res_seq)
+    
+   
+ 
+
+
 
 
 
