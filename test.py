@@ -737,7 +737,7 @@ for aa in in_pro_str:
     res *= mod_res
 
 print(res)
-"""
+
 # 21. Open reading frame:
 codon_tbl = {"UUU":"F","CUU":"L", "AUU":"I", "GUU":"V",
              "UUC":"F", "CUC":"L", "AUC":"I", "GUC":"V",
@@ -755,7 +755,6 @@ codon_tbl = {"UUU":"F","CUU":"L", "AUU":"I", "GUU":"V",
              "UGC":"C","CGC":"R","AGC":"S","GGC":"G",
              "UGA":"*","CGA":"R","AGA":"R","GGA":"G",
              "UGG":"W","CGG": "R","AGG":"R","GGG":"G"} 
-
 
 s = "AGCCATGTAGCTAACTCAGGTTACATGGGGATGACCCCGCGACTTGGATTAGAGTCTCTTTTGGAATAAGCCTGAATGATCCGAGTAGCATCTCAG"
 #transcription first:
@@ -813,9 +812,42 @@ def ORF_func(input):
     r_pro = fin_translate(r_frame)
 
 ORF_func(s)
+"""
+# 22. Permutations:
+input_num = 3
+input_num_ls = []
+for i in range(1, input_num + 1):
+    input_num_ls.append(i)
+    
+#print(input_num_ls)
 
+#take turn holding the first letter:
 
+input_hold_1 = input_num_ls[1:]
+f = []
+for i in input_hold_1:
+    #print(i)
+    f.append(i)
+print([input_num_ls[0]] + f)
 
+r = []
+for i in input_hold_1[::-1]:
+    #print(i)
+    r.append(i)
+print([input_num_ls[0]] + r)
+
+input_hold_2 = [input_num_ls[0]] + input_num_ls[2:]
+f1 = []
+for i in input_hold_2:
+    #print(i)
+    f1.append(i)
+print([input_num_ls[1]] + f1)
+
+r1 = []
+for i in input_hold_2[::-1]:
+    #print(i)
+    r1.append(i)
+print([input_num_ls[1]] + r1)
 
 
 
@@ -840,10 +872,3 @@ ORF_func(s)
 
 
     
-
-                   
-               
-    
-    
-
-
