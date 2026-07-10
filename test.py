@@ -849,20 +849,29 @@ for i in input_hold_2[::-1]:
 #print([input_num_ls[1]] + r1)
 
 #now apply it inside a loop, based on the len of the input num:
-
-all_r = []
+count = 0
+f = list()
+r = list()
 for i in range(len(input_num_ls)): #input_hold_idx = i
     input_hold = input_num_ls[:i] + input_num_ls[i+1:] #print out everything except input_hold
     all_f = []
-    for f in input_hold:
-        all_f.append(f)
+    for a in input_hold:
+        all_f.append(a)
+    count += 1
 
     all_r = []
-    for r in input_hold[::-1]:
-        all_r.append(r)
-        
-    print([input_num_ls[i]] + all_f)
-    print([input_num_ls[i]] + all_r)
+    for b in input_hold[::-1]:
+        all_r.append(b)
+    
+    count += 1
+    f.append([input_num_ls[i]] + all_f)
+    r.append([input_num_ls[i]] + all_r)
+    #print([input_num_ls[i]] + all_f)
+    #print([input_num_ls[i]] + all_r)
+  
+print(count)
+print(f)
+print(r)
 
 
 
