@@ -821,33 +821,48 @@ for i in range(1, input_num + 1):
     
 #print(input_num_ls)
 
-#take turn holding the first letter:
-
+#take turn holding the first letter:-> then 2nd letter (shuffle the rest in foward then reverse order)
 input_hold_1 = input_num_ls[1:]
 f = []
 for i in input_hold_1:
     #print(i)
     f.append(i)
-print([input_num_ls[0]] + f)
+#print([input_num_ls[0]] + f)
 
 r = []
 for i in input_hold_1[::-1]:
     #print(i)
     r.append(i)
-print([input_num_ls[0]] + r)
+#print([input_num_ls[0]] + r)
 
 input_hold_2 = [input_num_ls[0]] + input_num_ls[2:]
 f1 = []
 for i in input_hold_2:
     #print(i)
     f1.append(i)
-print([input_num_ls[1]] + f1)
+#print([input_num_ls[1]] + f1)
 
 r1 = []
 for i in input_hold_2[::-1]:
     #print(i)
     r1.append(i)
-print([input_num_ls[1]] + r1)
+#print([input_num_ls[1]] + r1)
+
+#now apply it inside a loop, based on the len of the input num:
+
+all_r = []
+for i in range(len(input_num_ls)): #input_hold_idx = i
+    input_hold = input_num_ls[:i] + input_num_ls[i+1:] #print out everything except input_hold
+    all_f = []
+    for f in input_hold:
+        all_f.append(f)
+
+    all_r = []
+    for r in input_hold[::-1]:
+        all_r.append(r)
+        
+    print([input_num_ls[i]] + all_f)
+    print([input_num_ls[i]] + all_r)
 
 
 
