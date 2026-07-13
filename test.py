@@ -872,6 +872,24 @@ for a in p_in:
     mass += mass_dict[a]
 print(mass)
 """
+#24. Palindrom
+dna_s = "TCAATGCATGCGGGTCTATATGCAT"
+
+#rev complement:
+def complement(dna):
+    dna_rev = dna[::-1]
+    table = str.maketrans("ATGC", "TACG")
+    return(dna_rev.translate(table))
+
+seq_current = ""
+for i in range(len(dna_s)):
+    for j in range(i + 1, len(dna_s) + 1): #start at i and end at j or i:j -- accumulate from i:0, i:1, i:2, i:3, etc...
+        curr_string = dna_s[i:j]
+        if curr_string == complement(curr_string) and 3 < len(curr_string) and len(curr_string)<12:
+            #print(curr_string)
+            print(f"start:{i+1}")
+            #print(f"stop:{j}")
+            print(len(curr_string))
 
 
 
